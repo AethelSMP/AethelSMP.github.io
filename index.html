@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aethel SMP - A premium Minecraft Origins server. Choose your lineage, gain legendary abilities, and build your legend with a friendly community.">
+  <title>Aethel SMP | Origins Minecraft Server</title>
+  <style>
+    /* Premium CSS variables & dark/fantasy theme */
+    :root {
+      --bg-dark: #090b0e;
+      --bg-darker: #050608;
+      --bg-card: #12161f;
+      --bg-card-hover: #1a202c;
+      --primary: #10b981; /* Emerald Green */
+      --primary-hover: #059669;
+      --primary-glow: rgba(16, 185, 129, 0.25);
+      --accent: #f59e0b; /* Regal Gold */
+      --accent-hover: #d97706;
+      --accent-glow: rgba(245, 158, 11, 0.25);
+      --discord: #5865F2;
+      --discord-hover: #4752C4;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-light: #cbd5e1;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-highlight: rgba(16, 185, 129, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fixed misty fantasy landscape background (covers whole page) */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('data:image/jpeg;base64,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');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Dark overlay to keep foreground content readable */
+    .page-bg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(9, 11, 14, 0.72) 0%, rgba(9, 11, 14, 0.85) 60%, rgba(5, 6, 8, 0.95) 100%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-darker);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
+    }
+
+    /* Header & Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      fill: var(--primary);
+      filter: drop-shadow(0 0 8px var(--primary-glow));
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text-main);
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-text span {
+      color: var(--primary);
+      -webkit-text-fill-color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      background-color: rgba(16, 185, 129, 0.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 6rem 2rem 8rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    /* Floating particles background decoration */
+    .hero-bg-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--border-highlight);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.05);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.03); opacity: 1; }
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 10px rgba(16, 185, 129, 0.15));
+    }
+
+    .hero-desc {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-desc strong {
+      color: var(--text-main);
+    }
+
+    /* Server Status & IP widget */
+    .server-status-container {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      border-radius: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      max-width: 800px;
+      width: 100%;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .server-status-container::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(16, 185, 129, 0.15));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--primary);
+      position: relative;
+    }
+
+    .status-indicator::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      animation: status-pulse 2s infinite ease-out;
+    }
+
+    @keyframes status-pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    .status-info {
+      text-align: left;
+    }
+
+    .status-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    .status-value {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 1.1rem;
+    }
+
+    .ip-box {
+      flex: 1;
+      min-width: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--bg-darker);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+    }
+
+    .ip-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      color: var(--accent);
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+
+    .copy-btn {
+      background-color: var(--primary);
+      color: var(--bg-darker);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .copy-btn:active {
+      transform: translateY(1px);
+    }
+
+    .discord-cta-btn {
+      background-color: var(--discord);
+      color: white;
+      text-decoration: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(88, 101, 242, 0.3);
+    }
+
+    .discord-cta-btn:hover {
+      background-color: var(--discord-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+    }
+
+    /* Origins Plugin Interactive Section */
+    .section-title-wrapper {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-badge {
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title span {
+      color: var(--primary);
+    }
+
+    .origins-section {
+      max-width: 1000px;
+      margin: 0 auto 8rem auto;
+      padding: 0 2rem;
+    }
+
+    .origins-container {
+      display: grid;
+      grid-template-columns: 280px 180px 1fr;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 400px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* If columns squish on smaller screens, we stack them */
+    @media (max-width: 850px) {
+      .origins-container {
+        grid-template-columns: 1fr;
+      }
+      .origins-art {
+        display: none;
+      }
+    }
+
+    .origins-art {
+      background: linear-gradient(185deg, var(--bg-card) 20%, #0d2820 100%);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .origins-art-bg-icon {
+      position: absolute;
+      opacity: 0.04;
+      width: 250px;
+      height: 250px;
+      fill: var(--primary);
+    }
+
+    .origin-avatar-frame {
+      width: 110px;
+      height: 110px;
+      border: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 8px;
+      background-color: var(--bg-dark);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .origin-avatar-frame svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--accent);
+    }
+
+    .origin-meta {
+      text-align: center;
+      z-index: 2;
+    }
+
+    .origin-title-big {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .origin-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .origins-list {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .origin-item {
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .origin-item svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .origin-item:hover {
+      color: var(--text-main);
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    .origin-item.active {
+      color: var(--primary);
+      background-color: rgba(16, 185, 129, 0.05);
+      font-weight: 700;
+      box-shadow: inset 4px 0 0 var(--primary);
+    }
+
+    .origin-details {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .origin-desc-text {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .pros-cons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 550px) {
+      .pros-cons-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pro-column, .con-column {
+      background-color: rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .pro-column {
+      border-top: 3px solid var(--primary);
+    }
+
+    .con-column {
+      border-top: 3px solid #ef4444; /* Red color for weaknesses */
+    }
+
+    .pc-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pro-column .pc-title { color: var(--primary); }
+    .con-column .pc-title { color: #ef4444; }
+
+    .pc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pc-list li {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .pc-list li::before {
+      content: '\2022';
+      font-weight: bold;
+    }
+
+    .pro-column .pc-list li::before { color: var(--primary); }
+    .con-column .pc-list li::before { color: #ef4444; }
+
+
+    /* Rules Section styling */
+    .rules-section {
+      max-width: 1000px;
+      margin: 0 auto 8rem auto;
+      padding: 0 2rem;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rule-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rule-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    .rule-card:hover {
+      transform: translateY(-5px);
+      background-color: var(--bg-card-hover);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border-color: rgba(245, 158, 11, 0.2);
+    }
+
+    .rule-card:hover::before {
+      background-color: var(--primary);
+      height: 100%;
+    }
+
+    .rule-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .rule-number {
+      font-family: monospace;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: var(--accent);
+      background-color: rgba(245, 158, 11, 0.1);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rule-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .rule-body {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .allowed-pill {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Discord Callout Banner */
+    .discord-banner-section {
+      max-width: 1000px;
+      margin: 0 auto 8rem auto;
+      padding: 0 2rem;
+    }
+
+    .discord-banner {
+      background: linear-gradient(135deg, #1b2230 0%, #0d121c 100%);
+      border: 1px solid rgba(88, 101, 242, 0.2);
+      border-radius: 24px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .discord-banner::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(88, 101, 242, 0.15) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+    }
+
+    .discord-banner-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .discord-banner-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      font-size: 1.1rem;
+    }
+
+    .discord-banner-btn-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-darker);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-disclaimer {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Clipboard Popover notification */
+    .toast-notification {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--bg-card);
+      border-left: 4px solid var(--primary);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(150%);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 100;
+    }
+
+    .toast-notification.show {
+      transform: translateY(0);
+    }
+
+    .toast-icon {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .toast-message {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    /* Responsive type scaling */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.75rem; }
+      .hero-desc { font-size: 1.05rem; }
+      .section-title { font-size: 2rem; }
+      header { padding: 1.25rem; }
+      nav { gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed misty fantasy landscape background + readability overlay -->
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="page-bg-overlay" aria-hidden="true"></div>
+
+  <!-- Floating Toast Notification for IP copying -->
+  <div id="toast" class="toast-notification" role="status" aria-live="polite">
+    <svg class="toast-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+    </svg>
+    <div class="toast-message">Server IP copied to clipboard!</div>
+  </div>
+
+  <header>
+    <a href="#" class="logo-container" aria-label="Aethel SMP home">
+      <!-- Medieval Crown / Sword Inspired Emblem SVG -->
+      <svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2L15 8L21 9L16.5 14L18 20L12 17L6 20L7.5 14L3 9L9 8L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+      </svg>
+      <div class="logo-text">Aethel<span>SMP</span></div>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#">Home</a>
+      <a href="#origins">Origins</a>
+      <a href="#rules">Rules</a>
+      <a href="https://discord.gg/uqbWUPYs" target="_blank" rel="noopener noreferrer">Discord</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg-glow" aria-hidden="true"></div>
+    <div class="hero-tagline">
+      <!-- Shield Icon SVG -->
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm-1-3a1 1 0 001-1V7a1 1 0 10-2 0v3a1 1 0 001 1z" clip-rule="evenodd" />
+      </svg>
+      Minecraft Origins Server
+    </div>
+    <h1><span class="gradient-text">Aethel SMP</span></h1>
+    <p class="hero-desc">
+      Welcome to the ultimate custom experience! We are a premium <strong style="color: var(--primary);">server with the Origins plugin</strong>. Choose your starting lineage, acquire legendary abilities (and balancing drawbacks), and craft your legend with friends in a vibrant, friendly community.
+    </p>
+
+    <div class="server-status-container">
+      <div class="status-badge">
+        <div class="status-indicator" aria-hidden="true"></div>
+        <div class="status-info">
+          <div class="status-label">Server Status</div>
+          <div class="status-value">Online</div>
+        </div>
+      </div>
+
+      <div class="ip-box">
+        <div style="text-align: left;">
+          <div class="status-label">Server IP Address</div>
+          <div class="ip-text">aethelsmp.playmc.cool</div>
+        </div>
+        <button class="copy-btn" id="copyBtn" type="button">
+          <!-- Copy Clipboard Icon SVG -->
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+          </svg>
+          Copy IP
+        </button>
+      </div>
+
+      <a href="https://discord.gg/uqbWUPYs" target="_blank" rel="noopener noreferrer" class="discord-cta-btn">
+        <!-- Discord Logo SVG -->
+        <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" aria-hidden="true">
+          <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.88-.65,1.72-1.34,2.51-2a75.58,75.58,0,0,0,73,0c.79.71,1.63,1.4,2.51,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31-18.83C129.92,50.12,123.76,27.27,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+        </svg>
+        Join Discord
+      </a>
+    </div>
+  </section>
+
+  <!-- Origins Plugin Highlights Section -->
+  <section class="origins-section" id="origins">
+    <div class="section-title-wrapper">
+      <div class="section-badge">Origins Showcase</div>
+      <h2 class="section-title">Forge Your <span>Heritage</span></h2>
+    </div>
+
+    <div class="origins-container">
+      <!-- Interactive Left Side Art Frame -->
+      <div class="origins-art">
+        <svg class="origins-art-bg-icon" viewBox="0 0 24 24" id="current-bg-svg" aria-hidden="true">
+          <!-- Background SVG shifts depending on active tab -->
+          <path d="M12 2L15 8L21 9L16.5 14L18 20L12 17L6 20L7.5 14L3 9L9 8L12 2Z" />
+        </svg>
+        <div class="origin-avatar-frame" id="origin-avatar">
+          <!-- Main Icon SVG (loaded via Javascript dynamically) -->
+          <svg viewBox="0 0 24 24" id="avatar-svg" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+          </svg>
+        </div>
+        <div class="origin-meta">
+          <div class="origin-title-big" id="origin-title">Human</div>
+          <div class="origin-subtitle">Default Path</div>
+        </div>
+      </div>
+
+      <!-- Center Tabs selection -->
+      <div class="origins-list">
+        <button class="origin-item active" type="button" onclick="switchOrigin('human', this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+          Human
+        </button>
+        <button class="origin-item" type="button" onclick="switchOrigin('elytrian', this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.33 0 2.5.4 3.5 1.1A8.25 8.25 0 0 1 18.9 7h-2.14a6.11 6.11 0 0 0-4.76-3H12V2Zm0 20c-1.33 0-2.5-.4-3.5-1.1A8.25 8.25 0 0 1 5.1 17h2.14a6.11 6.11 0 0 0 4.76 3H12v2ZM3 12c0-1.33.4-2.5 1.1-3.5A8.25 8.25 0 0 1 9 5.1v2.14a6.11 6.11 0 0 0-3 4.76V12H3Zm20 0c0 1.33-.4 2.5-1.1 3.5A8.25 8.25 0 0 1 15 18.9v-2.14a6.11 6.11 0 0 0 3-4.76V12h3Z"/></svg>
+          Elytrian
+        </button>
+        <button class="origin-item" type="button" onclick="switchOrigin('enderian', this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.12 0 2-.88 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Enderian
+        </button>
+        <button class="origin-item" type="button" onclick="switchOrigin('arachnid', this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          Arachnid
+        </button>
+        <button class="origin-item" type="button" onclick="switchOrigin('shulk', this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/></svg>
+          Shulk
+        </button>
+      </div>
+
+      <!-- Right Side Dynamic Details Panel -->
+      <div class="origin-details">
+        <div id="origin-desc" class="origin-desc-text">
+          Humans are the standard, baseline race of the Minecraft world. They represent perfect balance and versatile potential, having no special native bonuses but suffering from no inherent natural weaknesses.
+        </div>
+
+        <div class="pros-cons-grid">
+          <div class="pro-column">
+            <div class="pc-title">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              Strengths
+            </div>
+            <ul class="pc-list" id="origin-pros">
+              <li>No environmental vulnerabilities</li>
+              <li>Standard 10 heart container count</li>
+              <li>Full compatibility with all armor sets</li>
+            </ul>
+          </div>
+
+          <div class="con-column">
+            <div class="pc-title">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
+              Drawbacks
+            </div>
+            <ul class="pc-list" id="origin-cons">
+              <li>No natural magic or mechanical perks</li>
+              <li>Slower base speed than elite origins</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Server Rules Section -->
+  <section class="rules-section" id="rules">
+    <div class="section-title-wrapper">
+      <div class="section-badge">Server Guidelines</div>
+      <h2 class="section-title">Minecraft <span>Rules</span></h2>
+    </div>
+
+    <div class="rules-grid">
+      <!-- Rule 1: No Hacking/Cheating -->
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-number">01</div>
+          <div class="rule-title">No Hacking &amp; Cheating</div>
+        </div>
+        <div class="rule-body">
+          Unfair mods, hacked clients, X-ray packs, and auto-clickers are strictly banned from Aethel SMP. Play fair so everyone can enjoy a balanced experience.
+        </div>
+        <span class="allowed-pill">Allowed: Optifine, Sodium, Minimaps (no player radar)</span>
+      </div>
+
+      <!-- Rule 2: No Griefing/Stealing -->
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-number">02</div>
+          <div class="rule-title">No Griefing &amp; Stealing</div>
+        </div>
+        <div class="rule-body">
+          Do not destroy or take items from another player's builds, even if the land is unclaimed. Respect other players' hard work and creative creations.
+        </div>
+      </div>
+
+      <!-- Rule 3: No Chat Spam -->
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-number">03</div>
+          <div class="rule-title">No Chat Spam</div>
+        </div>
+        <div class="rule-body">
+          Avoid flooding the chat with capital letters, highly repetitive messages, or pointless symbols. Keep the public server chat pleasant, clean, and legible.
+        </div>
+      </div>
+
+      <!-- Rule 4: No Lag Machines -->
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-number">04</div>
+          <div class="rule-title">No Lag Machines</div>
+        </div>
+        <div class="rule-body">
+          Do not build redstone clocks or complex automated mob farms intentionally designed to lag, freeze, or crash the server database and performance.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discord Banner -->
+  <section class="discord-banner-section">
+    <div class="discord-banner">
+      <h2 class="discord-banner-title">Join Our Community</h2>
+      <p class="discord-banner-desc">
+        Chat with fellow origin players, organize builds, participate in events, and receive the latest updates directly on our official discord community server.
+      </p>
+      <div class="discord-banner-btn-wrapper">
+        <a href="https://discord.gg/uqbWUPYs" target="_blank" rel="noopener noreferrer" class="discord-cta-btn">
+          <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" aria-hidden="true">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.88-.65,1.72-1.34,2.51-2a75.58,75.58,0,0,0,73,0c.79.71,1.63,1.4,2.51,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31-18.83C129.92,50.12,123.76,27.27,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+          </svg>
+          Join Discord Channel
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div class="logo-container" style="margin-bottom: 0.5rem;">
+          <svg class="logo-icon" style="width: 24px; height: 24px;" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2L15 8L21 9L16.5 14L18 20L12 17L6 20L7.5 14L3 9L9 8L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+          </svg>
+          <div class="logo-text" style="font-size: 1.1rem;">Aethel<span>SMP</span></div>
+        </div>
+        <p class="footer-text">The premium Origins multiplayer sandbox experience.</p>
+        <p class="footer-disclaimer">Not affiliated with Mojang Studios or Microsoft.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#origins">Origins</a>
+        <a href="#rules">Rules</a>
+        <a href="https://discord.gg/uqbWUPYs" target="_blank" rel="noopener noreferrer">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript interactivity -->
+  <script>
+    // Copy IP Functionality
+    const ipAddress = "aethelsmp.playmc.cool";
+    const copyBtn = document.getElementById("copyBtn");
+    const toast = document.getElementById("toast");
+    let toastTimer, resetTimer;
+
+    async function copyIp() {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(ipAddress);
+        } else {
+          // Fallback for older browsers / non-secure contexts
+          const tempInput = document.createElement("input");
+          tempInput.value = ipAddress;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand("copy");
+          document.body.removeChild(tempInput);
+        }
+      } catch (err) {
+        console.error("Clipboard copy failed:", err);
+      }
+
+      // Show toast notification
+      toast.classList.add("show");
+
+      // Change button state
+      const originalHTML = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg> Copied!';
+      copyBtn.style.backgroundColor = "#059669";
+
+      clearTimeout(toastTimer);
+      clearTimeout(resetTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
+      resetTimer = setTimeout(() => {
+        copyBtn.innerHTML = originalHTML;
+        copyBtn.style.backgroundColor = "var(--primary)";
+      }, 4000);
+    }
+
+    copyBtn.addEventListener("click", copyIp);
+
+    // Origins Database for Showcase
+    const originsData = {
+      human: {
+        title: "Human",
+        subtitle: "Default Path",
+        desc: "Humans are the standard, baseline race of the Minecraft universe. They represent perfect balance and versatile potential, having no special native bonuses but suffering from no inherent natural weaknesses.",
+        pros: [
+          "No environmental vulnerabilities",
+          "Standard 10 heart container count",
+          "Full compatibility with all armor sets"
+        ],
+        cons: [
+          "No natural magical abilities",
+          "Slower base movement than elite specializations"
+        ],
+        svg: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>'
+      },
+      elytrian: {
+        title: "Elytrian",
+        subtitle: "Master of the Skies",
+        desc: "Born with majestic, functional wings folded on their backs, Elytrians are the lords of altitude. They glide gracefully on warm thermal updrafts, soaring over mountains and builds with unmatched aerial mobility.",
+        pros: [
+          "Permanent, reusable built-in Elytra wings",
+          "Launch into the air at will every 30 seconds",
+          "Deals double damage while in flight or falling"
+        ],
+        cons: [
+          "Cannot wear heavy heavy-tier chest armor",
+          "Takes double damage from hitting solid walls/blocks",
+          "Suffers from minor claustrophobia in low ceilings"
+        ],
+        svg: '<path d="M12 2c1.33 0 2.5.4 3.5 1.1A8.25 8.25 0 0 1 18.9 7h-2.14a6.11 6.11 0 0 0-4.76-3H12V2Zm0 20c-1.33 0-2.5-.4-3.5-1.1A8.25 8.25 0 0 1 5.1 17h2.14a6.11 6.11 0 0 0 4.76 3H12v2ZM3 12c0-1.33.4-2.5 1.1-3.5A8.25 8.25 0 0 1 9 5.1v2.14a6.11 6.11 0 0 0-3 4.76V12H3Zm20 0c0 1.33-.4 2.5-1.1 3.5A8.25 8.25 0 0 1 15 18.9v-2.14a6.11 6.11 0 0 0 3-4.76V12h3Z"/>'
+      },
+      enderian: {
+        title: "Enderian",
+        subtitle: "Dimensional Voyager",
+        desc: "Possessing a bloodline infused with End Crystals and void energy, Enderians can bend space-time to their whim. They navigate battlefields and terrain with seamless, infinite short-distance teleportation.",
+        pros: [
+          "Throw infinite Ender Pearls to teleport for free",
+          "Immune to accidental Ender Pearl collision damage",
+          "Increased reach distance when interacting with blocks"
+        ],
+        cons: [
+          "Takes rapid, burning damage from contact with water",
+          "Spawns with fear and vulnerability to Endermite attacks",
+          "Starts with slightly lower base health"
+        ],
+        svg: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.12 0 2-.88 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>'
+      },
+      arachnid: {
+        title: "Arachnid",
+        subtitle: "Weaver of Shadows",
+        desc: "Blessed with eight-legged instincts, Arachnids excel at subterranean exploration and ambushing targets. They can scale sheer vertical structures effortlessly and trap victims in dense, sticky nets.",
+        pros: [
+          "Climb any vertical wall or surface seamlessly",
+          "Generate sticky spider webs to trap opponents",
+          "Deals extra venomous melee damage to trapped targets"
+        ],
+        cons: [
+          "Has only 8 hearts of maximum health container",
+          "Strictly carnivorous; cannot eat plants or vegetables",
+          "Can get caught or slowed in deep running water currents"
+        ],
+        svg: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>'
+      },
+      shulk: {
+        title: "Shulk",
+        subtitle: "Unbreakable Fortress",
+        desc: "Encased in dense, protective chitinous armor inspired by End city defenders, Shulks are the ultimate tank class. They shrug off physical strikes easily and come with built-in emergency storage compartments.",
+        pros: [
+          "Comes with natural permanent protection armor",
+          "Has 9 extra permanent slots of inventory (built-in shulker box)",
+          "Immune to standard falling block damage"
+        ],
+        cons: [
+          "Slightly slower walking and sprinting speed",
+          "Exhausts and burns hunger bar twice as quickly",
+          "Cannot use shields to block attacks"
+        ],
+        svg: '<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>'
+      }
+    };
+
+    function switchOrigin(originKey, element) {
+      // Update Active Button CSS
+      const buttons = document.querySelectorAll('.origin-item');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      if (element) {
+        element.classList.add('active');
+      } else {
+        const clickedBtn = Array.from(buttons).find(btn => btn.textContent.trim().toLowerCase().includes(originKey));
+        if (clickedBtn) clickedBtn.classList.add('active');
+      }
+
+      const data = originsData[originKey];
+      if (!data) return;
+
+      // Update Art block Title & Subtitle
+      document.getElementById("origin-title").textContent = data.title;
+      document.querySelector(".origin-subtitle").textContent = data.subtitle;
+
+      // Update description
+      document.getElementById("origin-desc").textContent = data.desc;
+
+      // Update main active SVG inside avatar and background
+      document.getElementById("avatar-svg").innerHTML = data.svg;
+      document.getElementById("current-bg-svg").innerHTML = data.svg;
+
+      // Update Pros list
+      const prosContainer = document.getElementById("origin-pros");
+      prosContainer.innerHTML = '';
+      data.pros.forEach(pro => {
+        const li = document.createElement("li");
+        li.textContent = pro;
+        prosContainer.appendChild(li);
+      });
+
+      // Update Cons list
+      const consContainer = document.getElementById("origin-cons");
+      consContainer.innerHTML = '';
+      data.cons.forEach(con => {
+        const li = document.createElement("li");
+        li.textContent = con;
+        consContainer.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
